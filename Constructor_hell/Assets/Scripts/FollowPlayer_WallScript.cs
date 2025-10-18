@@ -28,6 +28,18 @@ public class FollowPlayer_WallScript : MonoBehaviour
 
             // Rotatie vastzetten op 90 graden
             transform.rotation = Quaternion.Euler(0f, player.transform.eulerAngles.y, 90f);
+        } else
+        {
+            rbWall.useGravity = true;
         }
+    }
+
+    public void Build()
+    {
+        Vector3 buildPos = player.transform.position + player.transform.forward * 2;
+        buildPos.y = 2.049017f;
+
+        transform.position = buildPos;
+        transform.rotation = Quaternion.Euler(0f, player.transform.eulerAngles.y - 90, 0f);
     }
 }
