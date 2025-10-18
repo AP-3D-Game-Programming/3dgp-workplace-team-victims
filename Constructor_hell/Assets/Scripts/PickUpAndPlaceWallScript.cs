@@ -8,6 +8,7 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
 
     private GameObject wall;
     private bool hasWall = false;
+    private bool inConstructionZone = false;
 
     public bool pickedUpWall = false;
     public bool placedWall = false;
@@ -38,6 +39,11 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         if (wallNearby && Input.GetKeyDown(KeyCode.E) && !hasWall)
         {
             PickUpWall();
+        }
+
+        if (hasWall && Input.GetKeyDown(KeyCode.B) && inConstructionZone)
+        {
+            BuildWall();
         }
 
 
@@ -91,11 +97,9 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         {
             buildText.gameObject.SetActive(true);
             gotToConstruction = true;
+            inConstructionZone = true;
 
-            if (hasWall && Input.GetKeyDown(KeyCode.B))
-            {
-                BuildWall();
-            }
+
         }
     }
 
@@ -104,6 +108,7 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         if (other.CompareTag("Ground"))
         {
             buildText.gameObject.SetActive(false);
+            inConstructionZone = false;
         }
     }
 

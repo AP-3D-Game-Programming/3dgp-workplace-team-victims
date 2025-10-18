@@ -17,7 +17,7 @@ public class ShowObjectives : MonoBehaviour
     {
         if (buildScript.pickedUpWall && !buildScript.gotToConstruction && !buildScript.placedWall)
         {
-            objectiveText.text = "Objective: Go to construction Zone. (light grey)";
+            objectiveText.text = "Objective: Go to 1 of the construction Zones. (light grey)";
         }
         else if (buildScript.pickedUpWall && buildScript.gotToConstruction && !buildScript.placedWall)
         {
