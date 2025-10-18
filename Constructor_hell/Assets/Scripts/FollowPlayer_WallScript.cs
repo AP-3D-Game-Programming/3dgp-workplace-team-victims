@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class FollowPlayer_WallScript : MonoBehaviour
 {
@@ -7,7 +7,7 @@ public class FollowPlayer_WallScript : MonoBehaviour
     private Rigidbody rbWall;
     private GameObject player;
 
-    // Wordt één keer aangeroepen bij het starten van het script
+    // Wordt Ã©Ã©n keer aangeroepen bij het starten van het script
     private void Start()
     {
         rbWall = GetComponent<Rigidbody>();
@@ -20,26 +20,31 @@ public class FollowPlayer_WallScript : MonoBehaviour
         if (followPlayer)
         {
 
-            rbWall.useGravity = false;
 
             // Plaats de muur boven de speler
-            Vector3 followPosition = player.transform.position + Vector3.up * 2f;
+            Vector3 followPosition = player.transform.position + Vector3.up * 5f;
             transform.position = followPosition;
 
             // Rotatie vastzetten op 90 graden
             transform.rotation = Quaternion.Euler(0f, player.transform.eulerAngles.y, 90f);
-        } else
-        {
-            rbWall.useGravity = true;
         }
     }
 
+    // zet muur neer
     public void Build()
     {
-        Vector3 buildPos = player.transform.position + player.transform.forward * 2;
-        buildPos.y = 2.049017f;
+        Collider col = GetComponentInChildren<Collider>();
+        if (col == null) return;
+
+        Vector3 buildPos = player.transform.position + player.transform.forward * 20f;
+
+        if (Physics.Raycast(buildPos + Vector3.up * 5f, Vector3.down, out RaycastHit hit, 20f))
+        {
+            buildPos.y = hit.point.y + 100;
+        }
 
         transform.position = buildPos;
-        transform.rotation = Quaternion.Euler(0f, player.transform.eulerAngles.y - 90, 0f);
+        transform.rotation = Quaternion.Euler(0f, player.transform.eulerAngles.y - 90f, 0f);
     }
+
 }

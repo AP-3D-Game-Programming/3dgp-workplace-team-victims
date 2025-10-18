@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class PickUpAndPlaceWallScript : MonoBehaviour
 {
-    public float checkRadius = 2.0f;
     public TextMeshProUGUI pickUpText;
     public TextMeshProUGUI buildText;
 
     private GameObject wall;
     private bool hasWall = false;
+
+    public bool pickedUpWall = false;
+    public bool placedWall = false;
+    public bool gotToConstruction = false;
 
     // Called once before the first execution of Update
     private void Start()
@@ -29,7 +32,6 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         } else
         {
             pickUpText.gameObject.SetActive(false);
-            buildText.gameObject.SetActive(true);
 
         }
 
@@ -38,22 +40,22 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
             PickUpWall();
         }
 
-        if (hasWall && Input.GetKeyDown(KeyCode.B))
-        {
-            BuildWall();
-        }
+
+
     }
 
     // Checks for nearby wall objects within the checkRadius
     private bool CheckForNearbyWall()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, checkRadius);
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
 
-        foreach (Collider hit in hitColliders)
+        foreach (GameObject w in walls)
         {
-            if (hit.CompareTag("Wall"))
+            float distance = Vector3.Distance(transform.position, w.transform.position);
+
+            if (distance < 20f)
             {
-                wall = hit.gameObject;
+                wall = w;
                 return true;
             }
         }
@@ -61,12 +63,14 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         return false;
     }
 
+
     // Activates the wall's follow behavior
     private void PickUpWall()
     {
         hasWall = true;
         FollowPlayer_WallScript wallScript = wall.GetComponent<FollowPlayer_WallScript>();
         wallScript.followPlayer = true;
+        pickedUpWall = true;
     }
 
     // place down wall and deactivate the wall's follow behavior
@@ -76,7 +80,31 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         wallScript.followPlayer = false;
         wallScript.Build();
         hasWall = false;
+        placedWall = true;
 
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            buildText.gameObject.SetActive(true);
+            gotToConstruction = true;
+
+            if (hasWall && Input.GetKeyDown(KeyCode.B))
+            {
+                BuildWall();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ground"))
+        {
+            buildText.gameObject.SetActive(false);
+        }
+    }
+
 }
