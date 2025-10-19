@@ -1,58 +1,68 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    //player movement
+    // Movement
     private float lateralInput;
-    private float forwardlInput;
-    public float speed = 50.0f;
-    Rigidbody rb;
+    private float forwardInput;
+    public float speed = 5f;
     public Transform orientation;
-    Vector3 moveDirection;
-    Vector3 velocity;
-    private float gravity;
+    private Rigidbody rb;
+    private Vector3 moveDirection;
 
-    //jumping
-    private float jumpForce;
-    private float jumpCooldown;
-    private float airMultiplier;
-    private bool isReadyToJump;
+    // Footstep sound system
+    private AudioSource audioSource;
+    public AudioClip step1;
+    public AudioClip step2;
+    public float stepDelay = 0.5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool isStepping = false;
+    private bool playFirstStep = true;
+
     void Start()
     {
 
+        audioSource = GetComponent<AudioSource>();
     }
-    
-    // Update is called once per frame
+
     void Update()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         lateralInput = Input.GetAxis("Horizontal");
-        forwardlInput = Input.GetAxis("Vertical");
-        
-        //makes the player only move on the x and z axis
-        moveDirection = orientation.forward * forwardlInput + orientation.right * lateralInput;
+        forwardInput = Input.GetAxis("Vertical");
+
+        moveDirection = orientation.forward * forwardInput + orientation.right * lateralInput;
         moveDirection.y = 0f;
         moveDirection.Normalize();
+
         transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
 
-        //gravity = Physics.gravity * mass * Time.deltaTime;
-        //velocity.y = 
+        HandleFootsteps();
+    }
 
-        //transform.Translate(orientation.forward * forwardlInput * speed * Time.deltaTime);
-        //transform.Translate(orientation.right * lateralInput * speed * Time.deltaTime);
+    void HandleFootsteps()
+    {
+        bool isMoving = moveDirection.magnitude > 0.1f;
 
-        //Vector3 moveDirection = (orientation.forward * forwardlInput) + (orientation.right * lateralInput);
-        //moveDirection.Normalize();
-        //transform.Translate(moveDirection * speed * Time.deltaTime, Space.World);
+        if (isMoving && !isStepping)
+        {
+            StartCoroutine(PlayStep());
+        }
+    }
 
-        //transform.Rotate(orientation.forward * forwardlInput + orientation.right * lateralInput);
+    IEnumerator PlayStep()
+    {
+        isStepping = true;
 
-        //rb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
+        // Alternate between the two clips
+        AudioClip clipToPlay = playFirstStep ? step1 : step2;
+        audioSource.PlayOneShot(clipToPlay);
+        playFirstStep = !playFirstStep;
 
-        //rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        yield return new WaitForSeconds(stepDelay);
+        isStepping = false;
     }
 }

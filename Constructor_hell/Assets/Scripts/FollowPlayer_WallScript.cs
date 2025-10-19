@@ -7,11 +7,15 @@ public class FollowPlayer_WallScript : MonoBehaviour
     private Rigidbody rbWall;
     private GameObject player;
 
+    // Sound
+    AudioSource aS;
+
     // Wordt één keer aangeroepen bij het starten van het script
     private void Start()
     {
         rbWall = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+        aS = GetComponent<AudioSource>();
     }
 
     // Wordt elke frame aangeroepen
@@ -45,6 +49,9 @@ public class FollowPlayer_WallScript : MonoBehaviour
 
         transform.position = buildPos;
         transform.rotation = Quaternion.Euler(0f, player.transform.eulerAngles.y - 90f, 0f);
+
+        // Place sound
+        aS.Play();
     }
 
 }

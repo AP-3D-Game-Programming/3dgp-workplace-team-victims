@@ -14,10 +14,14 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
     public bool placedWall = false;
     public bool gotToConstruction = false;
 
+    // Sound
+    private AudioSource aS;
+    public AudioClip errorSound;
+
     // Called once before the first execution of Update
     private void Start()
     {
-        
+        aS = GetComponent<AudioSource>();
     }
 
     // Called once per frame
@@ -44,6 +48,11 @@ public class PickUpAndPlaceWallScript : MonoBehaviour
         if (hasWall && Input.GetKeyDown(KeyCode.B) && inConstructionZone)
         {
             BuildWall();
+        }
+
+        if (hasWall && Input.GetKeyDown(KeyCode.B) && !inConstructionZone)
+        {
+            aS.PlayOneShot(errorSound);
         }
 
 
