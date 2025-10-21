@@ -2,34 +2,39 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    public float sensX = 200;
-    public float sensY = 200;
+    [Header("Sensitivity Settings")]
+    public float sensX = 100;
+    public float sensY = 100;
 
-    float xRotation;
-    float yRotation;
+    private float xRotation;
+    private float yRotation;
 
-    private GameObject player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Transform player;
+    private float mouseX;
+    private float mouseY;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //get mouse input
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+        // alleen input lezen
+        mouseX = Input.GetAxis("Mouse X") * sensX * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * sensY * Time.deltaTime;
 
         yRotation += mouseX;
         xRotation -= mouseY;
-
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+    }
 
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        player.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    void LateUpdate()
+    {
+        // pas rotatie toe in LateUpdate (na physics)
+        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        player.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }
