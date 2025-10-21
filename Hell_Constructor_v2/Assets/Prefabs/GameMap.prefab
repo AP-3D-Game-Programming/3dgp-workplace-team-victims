@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 946999996358924160}
   - component: {fileID: 4218660020655101989}
   - component: {fileID: 2120992728297434351}
+  - component: {fileID: 2082322721625018820}
   m_Layer: 0
   m_Name: building-b
   m_TagString: Untagged
@@ -89,6 +90,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2082322721625018820
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463795815177342266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.96999997, y: 1.2929999, z: 0.9399999}
+  m_Center: {x: 0.00000043213367, y: 0.64649993, z: 0.00000004470348}
 --- !u!1 &602612806698793654
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +256,7 @@ GameObject:
   - component: {fileID: 225989401910913750}
   - component: {fileID: 3786748543044691315}
   - component: {fileID: 1398874513188901305}
+  - component: {fileID: 6801961799207449639}
   m_Layer: 0
   m_Name: building-skyscraper-b
   m_TagString: Untagged
@@ -312,6 +335,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6801961799207449639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606068974749708396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3599997, y: 4.4799995, z: 1.3599998}
+  m_Center: {x: 0.00000083446497, y: 2.2399998, z: 0.00000011920929}
 --- !u!1 &933150988037828952
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 556448874856508386}
+  - component: {fileID: 3896889378096942369}
   m_Layer: 0
   m_Name: building-j (1)
   m_TagString: Untagged
@@ -344,6 +389,27 @@ Transform:
   - {fileID: 6410120020342408634}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3896889378096942369
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933150988037828952}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1187411588656094080
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +421,7 @@ GameObject:
   - component: {fileID: 1959444211148718394}
   - component: {fileID: 3215152000164957855}
   - component: {fileID: 827102108576184917}
+  - component: {fileID: 4670031856874824281}
   m_Layer: 0
   m_Name: building-e
   m_TagString: Untagged
@@ -433,6 +500,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4670031856874824281
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187411588656094080}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6400005, y: 0.89299995, z: 1.0078918}
+  m_Center: {x: -0.00000002980233, y: 0.44649997, z: 0.00000011920932}
 --- !u!1 &1805926283700782215
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +532,7 @@ GameObject:
   - component: {fileID: 3015011308371331542}
   - component: {fileID: 8223436757962142896}
   - component: {fileID: 1892036215206645592}
+  - component: {fileID: 5566996607880797015}
   m_Layer: 0
   m_Name: building-skyscraper-d
   m_TagString: Untagged
@@ -522,6 +611,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5566996607880797015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805926283700782215}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2799996, y: 5.4699984, z: 1.3878912}
+  m_Center: {x: 0.00000020861624, y: 2.7349992, z: 0.00000005960464}
 --- !u!1 &1905437670727461520
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +643,7 @@ GameObject:
   - component: {fileID: 6410120020342408634}
   - component: {fileID: 2745519980856183807}
   - component: {fileID: 2774481923986284212}
+  - component: {fileID: 8734308861230010858}
   m_Layer: 0
   m_Name: building-j
   m_TagString: Untagged
@@ -611,6 +722,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8734308861230010858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905437670727461520}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0835876, y: 1.6929998, z: 1.3399999}
+  m_Center: {x: 0, y: 0.8464999, z: 0}
 --- !u!1 &2006634574493917492
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,6 +886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1670681115157089903}
+  - component: {fileID: 8053475162918803526}
   m_Layer: 0
   m_Name: building-skyscraper-a
   m_TagString: Untagged
@@ -777,6 +910,27 @@ Transform:
   - {fileID: 8750406451111314998}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &8053475162918803526
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045939574388298965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2056679958890996469
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +1035,7 @@ GameObject:
   - component: {fileID: 3739195270755453861}
   - component: {fileID: 4086508962797543538}
   - component: {fileID: 780097315096464088}
+  - component: {fileID: 1019824980376042839}
   m_Layer: 0
   m_Name: building-m
   m_TagString: Untagged
@@ -959,6 +1114,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1019824980376042839
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288885274661619303}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2400005, y: 3.1499999, z: 1.2420003}
+  m_Center: {x: 0, y: 1.5749999, z: 0.00000009313228}
 --- !u!1 &2487686674957031864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1213,7 @@ GameObject:
   - component: {fileID: 312467385718827250}
   - component: {fileID: 247915506528877645}
   - component: {fileID: 7044968766573498868}
+  - component: {fileID: 2844395044432491688}
   m_Layer: 0
   m_Name: building-k
   m_TagString: Untagged
@@ -1115,6 +1292,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2844395044432491688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555227971584577505}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0835876, y: 1.4699999, z: 0.94199973}
+  m_Center: {x: 0, y: 0.73499995, z: -0.00000014901161}
 --- !u!1 &2588263447116579192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2838922623268094358}
+  - component: {fileID: 6075773144384356802}
   m_Layer: 0
   m_Name: building-j
   m_TagString: Untagged
@@ -1371,6 +1570,27 @@ Transform:
   - {fileID: 8658263098499198926}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6075773144384356802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183536658075573036}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3427959614204355370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4233299603676073842}
+  - component: {fileID: 8859859483237802659}
   m_Layer: 0
   m_Name: building-k
   m_TagString: Untagged
@@ -1671,6 +1892,27 @@ Transform:
   - {fileID: 312467385718827250}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8859859483237802659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3599611004593001928}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3765440394107767447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +2036,7 @@ GameObject:
   - component: {fileID: 8658263098499198926}
   - component: {fileID: 488374169984065931}
   - component: {fileID: 458794059595134144}
+  - component: {fileID: 5048212406285625821}
   m_Layer: 0
   m_Name: building-j
   m_TagString: Untagged
@@ -1872,6 +2115,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5048212406285625821
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227893991251656932}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0835876, y: 1.6929998, z: 1.3399999}
+  m_Center: {x: 0.00000023841858, y: 0.8464999, z: 0}
 --- !u!1 &4453577238241509513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5323787156447812707}
+  - component: {fileID: 2813854706765892229}
   m_Layer: 0
   m_Name: building-m
   m_TagString: Untagged
@@ -2109,6 +2374,27 @@ Transform:
   - {fileID: 3739195270755453861}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &2813854706765892229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803709792154257113}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5067699614953005040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,6 +2406,7 @@ GameObject:
   - component: {fileID: 8750406451111314998}
   - component: {fileID: 3669808066946205366}
   - component: {fileID: 6973700559599633720}
+  - component: {fileID: 8279999679812811867}
   m_Layer: 0
   m_Name: building-skyscraper-a
   m_TagString: Untagged
@@ -2198,6 +2485,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8279999679812811867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5067699614953005040}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3599998, y: 2.8799999, z: 1.3600001}
+  m_Center: {x: 0.0000005066394, y: 1.4399999, z: 0}
 --- !u!1 &5385505747772494669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2517,7 @@ GameObject:
   - component: {fileID: 4753259536083421687}
   - component: {fileID: 8527886713374279250}
   - component: {fileID: 5890097540625494680}
+  - component: {fileID: 5229607628338724959}
   m_Layer: 0
   m_Name: building-j (2)
   m_TagString: Untagged
@@ -2287,6 +2596,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5229607628338724959
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5385505747772494669}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0835886, y: 1.6929998, z: 1.3400003}
+  m_Center: {x: -0.00000005960466, y: 0.8464999, z: 0}
 --- !u!1 &5728717659562896830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,6 +2740,7 @@ GameObject:
   - component: {fileID: 7740011461045762135}
   - component: {fileID: 2935374737207635428}
   - component: {fileID: 44412863379975037}
+  - component: {fileID: 1890941755463718550}
   m_Layer: 0
   m_Name: building-skyscraper-e
   m_TagString: Untagged
@@ -2488,6 +2819,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1890941755463718550
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866262485289788330}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2949997, y: 4.0799994, z: 1.2420002}
+  m_Center: {x: -0.00000008940696, y: 2.0399997, z: 0.00000002980232}
 --- !u!1 &6044142683820007906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,6 +3188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6647078206178307274}
+  - component: {fileID: 705168583808250042}
   m_Layer: 0
   m_Name: building-skyscraper-d
   m_TagString: Untagged
@@ -2859,6 +3212,27 @@ Transform:
   - {fileID: 3015011308371331542}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &705168583808250042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301937505630418544}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6336594331953347978
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3490,7 @@ GameObject:
   - component: {fileID: 7696191067633775714}
   - component: {fileID: 7180232024946722147}
   - component: {fileID: 5628335338898879553}
+  - component: {fileID: 4804235867455612985}
   m_Layer: 0
   m_Name: building-g
   m_TagString: Untagged
@@ -3194,6 +3569,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4804235867455612985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898597681809971873}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.96999997, y: 1.6929998, z: 0.9220001}
+  m_Center: {x: 0, y: 0.8464999, z: -0.00000013411045}
 --- !u!1 &6921846236995457080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,6 +3692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7569136229936493288}
+  - component: {fileID: 6421758846853520089}
   m_Layer: 0
   m_Name: building-d
   m_TagString: Untagged
@@ -3319,6 +3716,27 @@ Transform:
   - {fileID: 8044189448562575390}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &6421758846853520089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079986134664030290}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7080096603902040843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3442,6 +3860,7 @@ GameObject:
   - component: {fileID: 7959041661264946953}
   - component: {fileID: 6475025821100959916}
   - component: {fileID: 9097023738794515558}
+  - component: {fileID: 1396054280548069213}
   m_Layer: 0
   m_Name: building-g
   m_TagString: Untagged
@@ -3520,6 +3939,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1396054280548069213
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295799047830060467}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9699999, y: 1.6929998, z: 0.9220001}
+  m_Center: {x: -0.00000047683716, y: 0.8464999, z: -0.00000035762787}
 --- !u!1 &7444951841783758753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,6 +3969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7789565915197695259}
+  - component: {fileID: 1037724733458825767}
   m_Layer: 0
   m_Name: building-g (1)
   m_TagString: Untagged
@@ -3552,6 +3993,27 @@ Transform:
   - {fileID: 7696191067633775714}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &1037724733458825767
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7444951841783758753}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7736700285292851637
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,6 +4025,7 @@ GameObject:
   - component: {fileID: 8044189448562575390}
   - component: {fileID: 2771519399147342045}
   - component: {fileID: 2422236072463488870}
+  - component: {fileID: 2323228344405742011}
   m_Layer: 0
   m_Name: building-d
   m_TagString: Untagged
@@ -3641,6 +4104,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2323228344405742011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7736700285292851637}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.8399999, y: 1.2929999, z: 0.89999974}
+  m_Center: {x: 0.00000023841858, y: 0.64649993, z: -0.00000008940696}
 --- !u!1 &7999338314129162651
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,6 +4492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8520521125217318140}
+  - component: {fileID: 2425755606149170917}
   m_Layer: 0
   m_Name: building-skyscraper-e
   m_TagString: Untagged
@@ -4031,6 +4516,27 @@ Transform:
   - {fileID: 7740011461045762135}
   m_Father: {fileID: 2443901053563406229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2425755606149170917
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040176345484258886}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9193835390325435688
 GameObject:
   m_ObjectHideFlags: 0
