@@ -4,15 +4,20 @@ using UnityEngine;
 public class PlayerBuildScript : MonoBehaviour
 {
 
+    public enum Structures
+    {
+        wall
+    }
+
     public TextMeshProUGUI pickUpText;
     public TextMeshProUGUI buildText;
 
-    private GameObject wall;
-    private bool hasWall = false;
+    private GameObject Structure;
+    private bool hasStructure = false;
     private bool inConstructionZone = false;
 
-    public bool pickedUpWall = false;
-    public bool placedWall = false;
+    public bool pickedUpStructure = false;
+    public bool placedStructure = false;
     public bool gotToConstruction = false;
 
     // Sound
@@ -28,12 +33,12 @@ public class PlayerBuildScript : MonoBehaviour
     // Called once per frame
     private void Update()
     {
-        bool wallNearby = CheckForNearbyWall();
+        bool StructureNearby = CheckForNearbyStructure();
 
         // show text
-        if (!hasWall)
+        if (!hasStructure)
         {
-            pickUpText.gameObject.SetActive(wallNearby);
+            pickUpText.gameObject.SetActive(StructureNearby);
             buildText.gameObject.SetActive(false);
         }
         else
@@ -42,37 +47,28 @@ public class PlayerBuildScript : MonoBehaviour
 
         }
 
-        if (wallNearby && Input.GetKeyDown(KeyCode.E) && !hasWall)
+        if (StructureNearby && Input.GetKeyDown(KeyCode.E) && !hasStructure)
         {
-            PickUpWall();
+            PickUpStructure();
         }
 
-        if (hasWall && Input.GetKeyDown(KeyCode.B) && inConstructionZone)
-        {
-            BuildWall();
-        }
-
-        if (hasWall && Input.GetKeyDown(KeyCode.B) && !inConstructionZone)
-        {
-            aS.PlayOneShot(errorSound);
-        }
 
 
 
     }
 
     // Checks for nearby wall objects within the checkRadius
-    private bool CheckForNearbyWall()
+    private bool CheckForNearbyStructure()
     {
-        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+        GameObject[] structures = GameObject.FindGameObjectsWithTag("Structure");
 
-        foreach (GameObject w in walls)
+        foreach (GameObject s in structures)
         {
-            float distance = Vector3.Distance(transform.position, w.transform.position);
+            float distance = Vector3.Distance(transform.position, s.transform.position);
 
             if (distance < 2f)
             {
-                wall = w;
+                Structure = s;
                 return true;
             }
         }
@@ -82,22 +78,22 @@ public class PlayerBuildScript : MonoBehaviour
 
 
     // Activates the wall's follow behavior
-    private void PickUpWall()
+    private void PickUpStructure()
     {
-        hasWall = true;
-        WallScript wallScript = wall.GetComponent<WallScript>();
+        hasStructure = true;
+        WallScript wallScript = Structure.GetComponent<WallScript>();
         wallScript.followPlayer = true;
-        pickedUpWall = true;
+        pickedUpStructure = true;
     }
 
     // place down wall and deactivate the wall's follow behavior
     private void BuildWall()
     {
-        WallScript wallScript = wall.GetComponent<WallScript>();
+        WallScript wallScript = Structure.GetComponent<WallScript>();
         wallScript.followPlayer = false;
         wallScript.Build();
-        hasWall = false;
-        placedWall = true;
+        hasStructure = false;
+        placedStructure = true;
 
 
     }
@@ -120,6 +116,14 @@ public class PlayerBuildScript : MonoBehaviour
         {
             buildText.gameObject.SetActive(false);
             inConstructionZone = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Blueprint"))
+        {
+
         }
     }
 }

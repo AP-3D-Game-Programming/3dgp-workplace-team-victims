@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Wall
   - Ground
   - Button
   - Spawn
   - Doorway
+  - Blueprint
+  - Structure
   layers:
   - Default
   - TransparentFX

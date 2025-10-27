@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_blueprint
       objectReference: {fileID: 0}
+    - target: {fileID: 3087707635469253012, guid: dc148089558b49546ab1d448577bfceb, type: 3}
+      propertyPath: m_TagString
+      value: Blueprint
+      objectReference: {fileID: 0}
     - target: {fileID: 8355214634101133130, guid: dc148089558b49546ab1d448577bfceb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -59,6 +63,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1440714737564471395, guid: dc148089558b49546ab1d448577bfceb, type: 3}
     - {fileID: 5251385856460325544, guid: dc148089558b49546ab1d448577bfceb, type: 3}
+    - {fileID: 3996250436588553506, guid: dc148089558b49546ab1d448577bfceb, type: 3}
+    - {fileID: 1095416770951593213, guid: dc148089558b49546ab1d448577bfceb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -15,15 +15,15 @@ public class ShowObjectivesScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (buildScript.pickedUpWall && !buildScript.gotToConstruction && !buildScript.placedWall)
+        if (buildScript.pickedUpStructure && !buildScript.gotToConstruction && !buildScript.placedStructure)
         {
             objectiveText.text = "Objective: Go to 1 of the construction Zones. (light grey)";
         }
-        else if (buildScript.pickedUpWall && buildScript.gotToConstruction && !buildScript.placedWall)
+        else if (buildScript.pickedUpStructure && buildScript.gotToConstruction && !buildScript.placedStructure)
         {
             objectiveText.text = "Objective: Build wall.";
         }
-        else if (buildScript.pickedUpWall && buildScript.gotToConstruction && buildScript.placedWall)
+        else if (buildScript.pickedUpStructure && buildScript.gotToConstruction && buildScript.placedStructure)
         {
             objectiveText.text = "Objective: Have fun!";
 
