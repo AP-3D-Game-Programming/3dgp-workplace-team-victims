@@ -877,7 +877,23 @@ PrefabInstance:
       objectReference: {fileID: 582562786}
     - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: jumpForce
-      value: 0
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: groundDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: jumpCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: playerHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: airMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9054009881175267803, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: m_Name
@@ -939,6 +955,10 @@ PrefabInstance:
     - target: {fileID: 2487686674957031864, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
       propertyPath: m_Name
       value: GameMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2799359092624224541, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

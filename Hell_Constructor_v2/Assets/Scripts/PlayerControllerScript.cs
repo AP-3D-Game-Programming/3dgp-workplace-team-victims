@@ -141,9 +141,7 @@ public class PlayerController : MonoBehaviour
         //reset y velocity
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.linearVelocity += Vector3.up * jumpForce;
-        //rb.MovePosition(rb.position + transform.up * jumpForce * airMultiplier * Time.fixedDeltaTime);
-
-        //rb.AddForce(transform.up * jumpCooldown, ForceMode.Impulse);
+        
     }
 
     void ResetJump()
