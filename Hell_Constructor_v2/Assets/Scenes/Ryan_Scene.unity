@@ -324,17 +324,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9699999, y: 1.6929998, z: 0.9220001}
   m_Center: {x: -0.00000047683716, y: 0.8464999, z: -0.00000035762787}
---- !u!114 &582562786 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5987776447298528147, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
-  m_PrefabInstance: {fileID: 1148846198}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &806127616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3183536658075573036, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
@@ -548,6 +537,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1296711345617941428, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400392259264500487, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9139347359225618395, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
@@ -885,11 +878,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 190652136818309067, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+    - target: {fileID: 17925940254823923, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: buildText
       value: 
       objectReference: {fileID: 2044959130}
-    - target: {fileID: 190652136818309067, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+    - target: {fileID: 17925940254823923, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: errorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
+    - target: {fileID: 17925940254823923, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: pickUpText
       value: 
       objectReference: {fileID: 1838047076}
@@ -933,10 +930,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2961785518986368670, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
-      propertyPath: objectiveText
-      value: 
-      objectReference: {fileID: 582562786}
     - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: jumpForce
       value: 10
@@ -956,6 +949,10 @@ PrefabInstance:
     - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: airMultiplier
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 9054009881175267803, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: m_Name

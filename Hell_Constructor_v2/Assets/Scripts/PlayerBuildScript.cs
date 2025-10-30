@@ -3,43 +3,37 @@ using UnityEngine;
 
 public class PlayerBuildScript : MonoBehaviour
 {
-
-    public enum Structures
-    {
-        wall
-    }
-
+    private GameObject structure;
     public TextMeshProUGUI pickUpText;
     public TextMeshProUGUI buildText;
+    private GameObject tempStructure;
+    private GameObject blueprint;
 
-    private GameObject Structure;
-    private bool hasStructure = false;
-    private bool inConstructionZone = false;
-
-    public bool pickedUpStructure = false;
-    public bool placedStructure = false;
-    public bool gotToConstruction = false;
-
-    // Sound
     private AudioSource aS;
     public AudioClip errorSound;
-
-    // Called once before the first execution of Update
-    private void Start()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        aS = GetComponent<AudioSource>();
+        structure = null;
+        aS = gameObject.GetComponent<AudioSource>();
     }
 
-    // Called once per frame
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         bool StructureNearby = CheckForNearbyStructure();
 
-        // show text
-        if (!hasStructure)
+        if (structure == null)
         {
-            pickUpText.gameObject.SetActive(StructureNearby);
-            buildText.gameObject.SetActive(false);
+            if (tempStructure.gameObject.GetComponent<StructureScript>().canPickUp)
+            {
+                pickUpText.gameObject.SetActive(StructureNearby);
+                if (Input.GetKeyDown(KeyCode.E) && structure == null)
+                {
+                    structure = tempStructure;
+                    PickUpStructure();
+                }
+            }
         }
         else
         {
@@ -47,17 +41,43 @@ public class PlayerBuildScript : MonoBehaviour
 
         }
 
-        if (StructureNearby && Input.GetKeyDown(KeyCode.E) && !hasStructure)
+        bool blueprintNearby = CheckForNearbyBlueprint();
+
+
+        if (blueprintNearby && structure != null)
         {
-            PickUpStructure();
+            StructureScript structureScript = structure.GetComponent<StructureScript>();
+            bool canBuild = structureScript.BlueprintComparer(blueprint);
+            if (canBuild)
+            {
+                buildText.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    structureScript.Build(blueprint);
+                    structure = null;
+                }
+            }
+        }
+        else if (!blueprintNearby && structure != null)
+        {
+            StructureScript structureScript = structure.GetComponent<StructureScript>();
+            structureScript.followPlayer = true;
+            buildText.gameObject.SetActive(false);
+
+        } else
+        {
+            buildText.gameObject.SetActive(false);
+
         }
 
-
+        if (!blueprintNearby && structure != null && Input.GetKeyDown(KeyCode.B))
+        {
+            aS.PlayOneShot(errorSound);
+        }
 
 
     }
 
-    // Checks for nearby wall objects within the checkRadius
     private bool CheckForNearbyStructure()
     {
         GameObject[] structures = GameObject.FindGameObjectsWithTag("Structure");
@@ -68,7 +88,7 @@ public class PlayerBuildScript : MonoBehaviour
 
             if (distance < 2f)
             {
-                Structure = s;
+                tempStructure = s;
                 return true;
             }
         }
@@ -76,54 +96,29 @@ public class PlayerBuildScript : MonoBehaviour
         return false;
     }
 
+    private bool CheckForNearbyBlueprint()
+    {
+        GameObject[] blueprints = GameObject.FindGameObjectsWithTag("Blueprint");
 
-    // Activates the wall's follow behavior
+        foreach (GameObject b in blueprints)
+        {
+            float distance = Vector3.Distance(transform.position, b.transform.position);
+
+            if (distance < 4f)
+            {
+                blueprint = b;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void PickUpStructure()
     {
-        hasStructure = true;
-        WallScript wallScript = Structure.GetComponent<WallScript>();
-        wallScript.followPlayer = true;
-        pickedUpStructure = true;
-    }
+        StructureScript structureScript = structure.GetComponent<StructureScript>();
 
-    // place down wall and deactivate the wall's follow behavior
-    private void BuildWall()
-    {
-        WallScript wallScript = Structure.GetComponent<WallScript>();
-        wallScript.followPlayer = false;
-        wallScript.Build();
-        hasStructure = false;
-        placedStructure = true;
-
-
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Ground"))
-        {
-            buildText.gameObject.SetActive(true);
-            gotToConstruction = true;
-            inConstructionZone = true;
-
-
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Ground"))
-        {
-            buildText.gameObject.SetActive(false);
-            inConstructionZone = false;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Blueprint"))
-        {
-
-        }
+        structureScript.followPlayer = true;
+        pickUpText.gameObject.SetActive(false);
     }
 }
