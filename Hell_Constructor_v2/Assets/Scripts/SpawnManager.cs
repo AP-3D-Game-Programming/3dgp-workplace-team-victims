@@ -3,15 +3,11 @@ using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject[] walls;              // Array of possible wall prefabs
-    public Transform spawnZone;             // Where to spawn
     public float interactDistance = 3f;
-    public float checkRadius = 1f;
-    public TextMeshProUGUI popupText;       // UI popup
+    public TextMeshProUGUI popupText;
 
     private Camera playerCamera;
-    private bool isLookingAtButton = false;
-    private int spawnedCount = 0;           // Track how many walls have been spawned
+    private SpawnZone currentZone;
 
     void Start()
     {
@@ -21,6 +17,12 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
+        HandleRaycast();
+        HandleInput();
+    }
+
+    void HandleRaycast()
+    {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         RaycastHit hit;
 
@@ -28,73 +30,40 @@ public class SpawnManager : MonoBehaviour
         {
             if (hit.collider.CompareTag("Button"))
             {
-                isLookingAtButton = true;
+                currentZone = hit.collider.GetComponentInParent<SpawnZone>();
 
-                if (spawnedCount >= walls.Length)
+                if (currentZone != null)
                 {
-                    popupText.text = "No more walls available!";
-                }
-                else if (IsWallAtSpawnZone())
-                {
-                    popupText.text = "A wall is already here";
-                }
-                else
-                {
-                    popupText.text = "Press F to spawn wall";
-                }
+                    popupText.gameObject.SetActive(true);
 
-                popupText.gameObject.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    TrySpawnWall();
+                    if (currentZone.HasStructure())
+                        popupText.text = "A structure is already built here";
+                    else
+                        popupText.text = "Press F to build structure";
                 }
-
                 return;
             }
         }
 
-        if (isLookingAtButton)
-        {
-            isLookingAtButton = false;
-            popupText.gameObject.SetActive(false);
-        }
+        currentZone = null;
+        popupText.gameObject.SetActive(false);
     }
 
-    void TrySpawnWall()
+    void HandleInput()
     {
-        if (spawnedCount >= walls.Length)
+        if (currentZone == null) return;
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("No more walls available!");
-            return;
+            if (!currentZone.HasStructure())
+            {
+                currentZone.SpawnStructure();
+                popupText.text = "Structure built!";
+            }
+            else
+            {
+                popupText.text = "Already built here!";
+            }
         }
-
-        if (IsWallAtSpawnZone())
-        {
-            Debug.Log("A wall already exists here!");
-            return;
-        }
-
-        // Choose the next wall from the array
-        GameObject wallPrefab = walls[spawnedCount];
-        Vector3 spawnPos = spawnZone.position + Vector3.up * (wallPrefab.transform.localScale.y / 2);
-
-        Instantiate(wallPrefab, spawnPos, spawnZone.rotation);
-        spawnedCount++;
-
-        Debug.Log("Spawned wall " + spawnedCount + "/" + walls.Length);
     }
-
-    bool IsWallAtSpawnZone()
-    {
-        Collider[] nearbyObjects = Physics.OverlapSphere(spawnZone.position, checkRadius);
-        foreach (Collider col in nearbyObjects)
-        {
-            if (col.CompareTag("Wall"))
-                return true;
-        }
-        return false;
-    }
-
-
 }
