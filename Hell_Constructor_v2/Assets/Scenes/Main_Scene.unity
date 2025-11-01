@@ -823,6 +823,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 17925940254823923, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: buildText
+      value: 
+      objectReference: {fileID: 2044959130}
+    - target: {fileID: 17925940254823923, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: errorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
+    - target: {fileID: 17925940254823923, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: pickUpText
+      value: 
+      objectReference: {fileID: 1838047076}
     - target: {fileID: 190652136818309067, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: buildText
       value: 
