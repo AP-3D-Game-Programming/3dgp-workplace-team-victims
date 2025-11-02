@@ -251,4 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StructureScript
   followPlayer: 0
-  pickedUpRotation: 90
+  pickedUpRotation: {x: 90, y: 0, z: 0}
+  canPickUp: 1
+  structureName: 

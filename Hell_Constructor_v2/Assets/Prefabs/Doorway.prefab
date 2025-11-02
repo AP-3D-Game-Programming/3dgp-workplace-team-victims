@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StructureScript
   followPlayer: 0
-  pickedUpRotation: 90
+  pickedUpRotation: {x: 90, y: 0, z: 0}
   canPickUp: 1
+  structureName: 
 --- !u!1001 &4033579947938616467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,6 +100,26 @@ PrefabInstance:
     - target: {fileID: 4209107769176266176, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
       propertyPath: m_Name
       value: FakeDoorwayDONOTREMOVE
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516836424240197194, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516836424240197194, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516836424240197194, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516836424240197194, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8516836424240197194, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

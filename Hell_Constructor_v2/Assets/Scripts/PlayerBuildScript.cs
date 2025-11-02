@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerBuildScript : MonoBehaviour
@@ -7,78 +6,113 @@ public class PlayerBuildScript : MonoBehaviour
     private GameObject structure;
     public TextMeshProUGUI pickUpText;
     public TextMeshProUGUI buildText;
-    private GameObject tempStructure;
+    private GameObject tempStructure; // Wordt ingesteld door CheckForNearbyStructure()
     private GameObject blueprint;
 
-    public bool canSpawn = true;
+    public bool canSpawn = true; // Deze is niet gebruikt in de logica, maar laat ik staan
 
     private AudioSource aS;
     public AudioClip errorSound;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         structure = null;
+        tempStructure = null; // Zorg ervoor dat deze ook null is bij de start
         aS = gameObject.GetComponent<AudioSource>();
+        if (pickUpText != null) pickUpText.gameObject.SetActive(false);
+        if (buildText != null) buildText.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        bool StructureNearby = CheckForNearbyStructure();
+        // 1. Zorg ervoor dat tempStructure bijgewerkt wordt.
+        bool structureNearby = CheckForNearbyStructure();
 
+        // ------------------
+        // LOGICA VOOR OPPAKKEN (structure == null)
+        // ------------------
         if (structure == null)
         {
-            if (tempStructure.gameObject.GetComponent<StructureScript>().canPickUp)
+            // Belangrijke FIX: Controleer of een structuur gevonden is (tempStructure != null)
+            if (structureNearby && tempStructure != null)
             {
-                pickUpText.gameObject.SetActive(StructureNearby);
-                if (Input.GetKeyDown(KeyCode.E) && structure == null)
+                // Dubbele controle om NullReferenceException te voorkomen
+                StructureScript script = tempStructure.GetComponent<StructureScript>();
+
+                if (script != null && script.canPickUp)
                 {
-                    structure = tempStructure;
-                    PickUpStructure();
+                    pickUpText.gameObject.SetActive(true);
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        structure = tempStructure;
+                        PickUpStructure();
+                    }
+                }
+                else
+                {
+                    pickUpText.gameObject.SetActive(false);
                 }
             }
+            else
+            {
+                pickUpText.gameObject.SetActive(false);
+            }
         }
-        else
+        else // structure != null (We dragen een structuur)
         {
             pickUpText.gameObject.SetActive(false);
 
-        }
-
-        bool blueprintNearby = CheckForNearbyBlueprint();
-
-
-        if (blueprintNearby && structure != null)
-        {
+            // ------------------
+            // LOGICA VOOR PLAATSEN (structure != null)
+            // ------------------
+            bool blueprintNearby = CheckForNearbyBlueprint();
             StructureScript structureScript = structure.GetComponent<StructureScript>();
-            bool canBuild = structureScript.BlueprintComparer(blueprint);
-            if (canBuild)
+
+            if (blueprintNearby)
             {
-                buildText.gameObject.SetActive(true);
+                // Blueprint is in de buurt, probeer uit te lijnen
+                bool canBuild = structureScript.BlueprintComparer(blueprint);
+
+                if (canBuild)
+                {
+                    // Uitleiding gelukt
+                    buildText.gameObject.SetActive(true);
+                    structureScript.followPlayer = false; // Blijf uitgelijnd
+
+                    if (Input.GetKeyDown(KeyCode.B))
+                    {
+                        // Succesvolle plaatsing
+                        structureScript.Build(blueprint);
+                        buildText.gameObject.SetActive(false);
+                        canSpawn = true;
+                        structure = null; // Laat de structuur los
+                        // Na succesvolle bouw zal het geplaatste object in de volgende frame 
+                        // niet opnieuw worden opgepakt omdat canPickUp = false is.
+                    }
+                }
+                else
+                {
+                    // Kan niet bouwen (verkeerde blueprint/structuur match)
+                    structureScript.followPlayer = true; // Volg de speler weer
+                    buildText.gameObject.SetActive(false);
+                }
+            }
+            else // Geen blueprint in de buurt
+            {
+                structureScript.followPlayer = true; // Blijf de speler volgen
+                buildText.gameObject.SetActive(false);
+
+                // Speel geluid af als de speler probeert te bouwen zonder blueprint
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    structureScript.Build(blueprint);
-                    structure = null;
+                    if (aS != null && errorSound != null)
+                    {
+                        aS.PlayOneShot(errorSound);
+                    }
                 }
             }
         }
-        else if (!blueprintNearby && structure != null)
-        {
-            StructureScript structureScript = structure.GetComponent<StructureScript>();
-            structureScript.followPlayer = true;
-            buildText.gameObject.SetActive(false);
-
-        } else
-        {
-            buildText.gameObject.SetActive(false);
-
-        }
-
-        if (!blueprintNearby && structure != null && Input.GetKeyDown(KeyCode.B))
-        {
-            aS.PlayOneShot(errorSound);
-        }
-
-
     }
 
     private bool CheckForNearbyStructure()
@@ -87,15 +121,21 @@ public class PlayerBuildScript : MonoBehaviour
 
         foreach (GameObject s in structures)
         {
-            float distance = Vector3.Distance(transform.position, s.transform.position);
-
-            if (distance < 2f)
+            // Zorg ervoor dat de structuur oppakbaar is voordat we de afstand controleren
+            StructureScript script = s.GetComponent<StructureScript>();
+            if (script != null && script.canPickUp)
             {
-                tempStructure = s;
-                return true;
+                float distance = Vector3.Distance(transform.position, s.transform.position);
+
+                if (distance < 2f)
+                {
+                    tempStructure = s;
+                    return true;
+                }
             }
         }
 
+        tempStructure = null; // FIX: Reset tempStructure als er niets in de buurt is
         return false;
     }
 
@@ -114,6 +154,7 @@ public class PlayerBuildScript : MonoBehaviour
             }
         }
 
+        blueprint = null; // Reset blueprint als er niets in de buurt is
         return false;
     }
 
@@ -123,6 +164,6 @@ public class PlayerBuildScript : MonoBehaviour
 
         structureScript.followPlayer = true;
         pickUpText.gameObject.SetActive(false);
-        canSpawn = true;
+        // canSpawn = true; // Niet echt gebruikt, maar kan blijven staan.
     }
 }
