@@ -7,6 +7,7 @@ public class StructureScript : MonoBehaviour
     public float pickedUpRotation;
     public bool canPickUp = true;
     private AudioSource aS;
+    public string structureName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +34,7 @@ public class StructureScript : MonoBehaviour
 
     public bool BlueprintComparer(GameObject blueprint)
     {
-        if (blueprint.gameObject.name.Contains(gameObject.name))
+        if (blueprint.gameObject.name.Contains(this.structureName))
         {
             followPlayer = false;
             transform.position = blueprint.transform.position;

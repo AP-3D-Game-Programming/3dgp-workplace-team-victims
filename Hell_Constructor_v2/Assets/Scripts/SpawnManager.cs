@@ -9,10 +9,14 @@ public class SpawnManager : MonoBehaviour
     private Camera playerCamera;
     private SpawnZone currentZone;
 
+
+    public GameObject player;
+
     void Start()
     {
         playerCamera = Camera.main;
         popupText.gameObject.SetActive(false);
+        player = GameObject.Find("Player");
     }
 
     void Update()
@@ -20,6 +24,8 @@ public class SpawnManager : MonoBehaviour
         HandleRaycast();
         HandleInput();
     }
+
+
 
     void HandleRaycast()
     {
@@ -36,10 +42,10 @@ public class SpawnManager : MonoBehaviour
                 {
                     popupText.gameObject.SetActive(true);
 
-                    if (currentZone.HasStructure())
-                        popupText.text = "A structure is already built here";
+                    if (currentZone.amount == 0)
+                        popupText.text = $"There are no more left!";
                     else
-                        popupText.text = "Press F to build structure";
+                        popupText.text = "Press F to drop off structure";
                 }
                 return;
             }
@@ -55,11 +61,14 @@ public class SpawnManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (!currentZone.HasStructure())
-            {
-                currentZone.SpawnStructure();
-                popupText.text = "Structure built!";
-            }
+
+                if (currentZone.amount != 0 && player.GetComponent<PlayerBuildScript>().canSpawn)
+                {
+                    currentZone.SpawnStructure();
+                    popupText.text = "Structure built!";
+                    currentZone.amount--;
+                    player.GetComponent<PlayerBuildScript>().canSpawn = false;
+                }
             else
             {
                 popupText.text = "Already built here!";

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2940706170361278178}
+  - component: {fileID: 7651619211569344930}
   m_Layer: 0
-  m_Name: DoorwayRoot
+  m_Name: Doorway
   m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,6 +33,21 @@ Transform:
   - {fileID: 4502983259387499953}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7651619211569344930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3089151643450159153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba51a6d4623020b4cbd8ebe18fe0dd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StructureScript
+  followPlayer: 0
+  pickedUpRotation: 90
+  canPickUp: 1
 --- !u!1001 &4033579947938616467
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,15 +4,22 @@ public class SpawnZone : MonoBehaviour
 {
     public GameObject structurePrefab;
     [HideInInspector] public GameObject spawnedObject;
+    
+    public string structureName;
+    public int maxAmount;
+    public int amount;
 
-    public bool HasStructure()
+    public void setNewMax(int max)
     {
-        return spawnedObject != null;
+        maxAmount = max;
+        amount = maxAmount;
     }
+
 
     public void SpawnStructure()
     {
-        if (HasStructure()) return;
+        if (amount == 0)
+            return;
 
         // Get the prefab height (from its mesh bounds)
         float heightOffset = 0f;
@@ -24,6 +31,8 @@ public class SpawnZone : MonoBehaviour
         Vector3 spawnPos = transform.position + Vector3.up * heightOffset;
 
         spawnedObject = Instantiate(structurePrefab, spawnPos, transform.rotation);
+        StructureScript script = spawnedObject.GetComponent<StructureScript>();
+        script.structureName = structureName;
     }
 
 }

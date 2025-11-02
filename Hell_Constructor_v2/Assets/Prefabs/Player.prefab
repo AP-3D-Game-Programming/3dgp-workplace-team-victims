@@ -309,6 +309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerCamera: {fileID: 5815074332827671921}
   moveSpeed: 10
+  sprintMultiplier: 1.5
+  sprintKey: 304
   step1: {fileID: 8300000, guid: 3d132da7af60f1145a3deb6a8bc42a08, type: 3}
   step2: {fileID: 8300000, guid: 47832b56ccba5bc408b1d5aac1871746, type: 3}
   stepDelay: 0.5
@@ -316,10 +318,10 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
-  groundDrag: 0
-  jumpForce: 0
-  jumpCooldown: 0
-  airMultiplier: 0
+  groundDrag: 10
+  jumpForce: 10
+  jumpCooldown: 1
+  airMultiplier: 2
   jumpKey: 32
 --- !u!82 &1310600338721680517
 AudioSource:
@@ -431,3 +433,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBuildScript
   pickUpText: {fileID: 0}
+  buildText: {fileID: 0}
+  errorSound: {fileID: 0}

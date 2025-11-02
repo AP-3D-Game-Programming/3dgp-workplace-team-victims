@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class PlayerBuildScript : MonoBehaviour
@@ -8,6 +9,8 @@ public class PlayerBuildScript : MonoBehaviour
     public TextMeshProUGUI buildText;
     private GameObject tempStructure;
     private GameObject blueprint;
+
+    public bool canSpawn = true;
 
     private AudioSource aS;
     public AudioClip errorSound;
@@ -104,7 +107,7 @@ public class PlayerBuildScript : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, b.transform.position);
 
-            if (distance < 4f)
+            if (distance < 6f)
             {
                 blueprint = b;
                 return true;
@@ -120,5 +123,6 @@ public class PlayerBuildScript : MonoBehaviour
 
         structureScript.followPlayer = true;
         pickUpText.gameObject.SetActive(false);
+        canSpawn = true;
     }
 }
