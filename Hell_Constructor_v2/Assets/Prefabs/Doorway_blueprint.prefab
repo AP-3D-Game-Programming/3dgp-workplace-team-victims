@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeDoorwayDONOTREMOVE
       objectReference: {fileID: 0}
+    - target: {fileID: 4209107769176266176, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5132561769500674418, guid: c2559d1abc9260c4ab5a4e6d4f7b1e22, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
