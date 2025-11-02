@@ -8,8 +8,11 @@ public class PlayerBuildScript : MonoBehaviour
     public TextMeshProUGUI buildText;
     private GameObject tempStructure; // Wordt ingesteld door CheckForNearbyStructure()
     private GameObject blueprint;
+    private LevelManager levelManager;
 
-    public bool canSpawn = true; // Deze is niet gebruikt in de logica, maar laat ik staan
+    public bool canSpawn = true;
+    private int[] structureAmountsLevels = { 5, 5 };
+    public int buildAmount = 0;
 
     private AudioSource aS;
     public AudioClip errorSound;
@@ -21,10 +24,16 @@ public class PlayerBuildScript : MonoBehaviour
         aS = gameObject.GetComponent<AudioSource>();
         if (pickUpText != null) pickUpText.gameObject.SetActive(false);
         if (buildText != null) buildText.gameObject.SetActive(false);
+        levelManager = gameObject.GetComponent<LevelManager>();
     }
 
     void Update()
     {
+        if (buildAmount == structureAmountsLevels[levelManager.level - 1])
+        {
+            buildAmount = 0;
+            levelManager.newLevel();
+        }
         // 1. Zorg ervoor dat tempStructure bijgewerkt wordt.
         bool structureNearby = CheckForNearbyStructure();
 
@@ -86,6 +95,7 @@ public class PlayerBuildScript : MonoBehaviour
                         structureScript.Build(blueprint);
                         buildText.gameObject.SetActive(false);
                         canSpawn = true;
+                        buildAmount++;
                         structure = null; // Laat de structuur los
                         // Na succesvolle bouw zal het geplaatste object in de volgende frame 
                         // niet opnieuw worden opgepakt omdat canPickUp = false is.

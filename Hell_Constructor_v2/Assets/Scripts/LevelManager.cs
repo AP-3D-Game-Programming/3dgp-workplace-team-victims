@@ -4,14 +4,15 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private int level;
+    public int level;
     private GameObject spawner;
     private string[] spawnerNames = { "Wall", "Doorway", "Floor" };
     private int[,] Amounts = { { 3, 1, 1 }, { 2, 1, 1 } }; // eerste is level, 2de is structure
+    public GameObject[] blueprintHouses;
     
     void Start()
     {
-        level = 1;
+        level = 0;
         newLevel();
     }
 
@@ -27,10 +28,18 @@ public class LevelManager : MonoBehaviour
         {
             spawner = GameObject.Find($"SpawnZone{spawnerNames[i]}");
             SpawnZone spawnZone = spawner.GetComponent<SpawnZone>();
-            spawnZone.setNewMax(Amounts[level - 1, i]);
+            spawnZone.setNewMax(Amounts[level, i]);
             spawnZone.structureName = spawnerNames[i];
 
-
         }
+        blueprintHouses[level].gameObject.SetActive(true);
+
+        GameObject[] structures = GameObject.FindGameObjectsWithTag("Structure");
+
+        foreach (GameObject s in structures)
+        {
+            s.GetComponent<StructureScript>().canPickUp = true;
+        }
+        level++;
     }
 }
