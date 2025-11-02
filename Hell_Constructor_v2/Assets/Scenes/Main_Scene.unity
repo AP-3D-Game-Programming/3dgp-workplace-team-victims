@@ -420,6 +420,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7401269417817462219, guid: 42f44c26198412c45ac56d03f9cfa79b, type: 3}
   m_PrefabInstance: {fileID: 1252668091}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &706127942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2443901053563406229, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
+  m_PrefabInstance: {fileID: 5038167425838569870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &806127616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3183536658075573036, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
@@ -521,6 +526,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1079081949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079081950}
+  m_Layer: 0
+  m_Name: RespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1079081950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079081949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 123, y: 165, z: 362}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706127942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088589481 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2045939574388298965, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
@@ -1442,6 +1478,14 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: superSecret
+      value: 
+      objectReference: {fileID: 8300000, guid: 4120e2bbac411fa45a554d67dee1dcaa, type: 3}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1079081950}
     - target: {fileID: 9054009881175267803, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1508,7 +1552,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2443901053563406229, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1079081950}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3183536658075573036, guid: 0a42939189c0a8c4e945fbb0a9639ddb, type: 3}
       insertIndex: -1

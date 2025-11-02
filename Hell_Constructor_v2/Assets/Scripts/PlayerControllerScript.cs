@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip step1;
     public AudioClip step2;
+    public AudioClip superSecret;
     public float stepDelay = 0.5f;
 
     private bool isStepping = false;
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + normalizedMoveDirection * currentSpeed * Time.fixedDeltaTime);
 
         HandleFootsteps();
+        HandleSuperSecret();
     }
 
     void HandleFootsteps()
@@ -154,4 +156,54 @@ public class PlayerController : MonoBehaviour
     {
         isReadyToJump = true;
     }
+
+    bool hasPlayedSecret = false;
+    public Transform respawnPoint; // assign in Inspector or use code fallback
+
+    void HandleSuperSecret()
+    {
+        float fallThreshold = -10f; // adjust for your map
+
+        if (transform.position.y < fallThreshold && !hasPlayedSecret)
+        {
+            hasPlayedSecret = true;
+            StartCoroutine(PlaySuperSecret());
+        }
+
+        if (transform.position.y >= fallThreshold && hasPlayedSecret)
+        {
+            hasPlayedSecret = false;
+        }
+    }
+
+    IEnumerator PlaySuperSecret()
+    {
+
+        audioSource.PlayOneShot(superSecret);
+
+        // Wait for the sound to finish before teleporting
+        yield return new WaitForSeconds(superSecret.length);
+
+        // Teleport player slightly above ground
+        Vector3 respawnPos;
+
+        if (respawnPoint != null)
+        {
+            respawnPos = respawnPoint.position + Vector3.up * 2f; // a bit above the respawn point
+        }
+        else
+        {
+            // fallback: teleport to (0, 5, 0)
+            respawnPos = new Vector3(0, 5f, 0);
+        }
+
+        rb.linearVelocity = Vector3.zero; // stop falling fast
+        rb.angularVelocity = Vector3.zero;
+        transform.position = respawnPos;
+
+
+    }
+
+
+
 }
