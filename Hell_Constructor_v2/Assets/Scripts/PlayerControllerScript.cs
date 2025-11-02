@@ -7,11 +7,17 @@ public class PlayerController : MonoBehaviour
     float verticalInput;
 
     Rigidbody rb;
-    public Camera playerCamera; // Sleep hier je main camera in in de inspector
+    public Camera playerCamera;
     public float moveSpeed = 5f;
+
+    // ADDED
+    public float sprintMultiplier = 1.5f; // Sprint speed multiplier
+    public KeyCode sprintKey = KeyCode.LeftShift; // Sprint key
+    private bool isSprinting = false; // Track sprint state
 
     private Vector3 moveDirection;
     private Vector3 normalizedMoveDirection;
+
     // Footstep sound system
     private AudioSource audioSource;
     public AudioClip step1;
@@ -45,9 +51,13 @@ public class PlayerController : MonoBehaviour
     {
         SpeedControl();
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.5f, whatIsGround);
+
         // Input ophalen
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        // Sprint input // ADDED
+        isSprinting = Input.GetKey(sprintKey);
 
         // Camera forward en right vector
         Vector3 forward = playerCamera.transform.forward;
@@ -85,15 +95,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Beweging toepassen
+        // ADDED: adjust movement speed based on sprint state
+        float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
 
-        rb.MovePosition(rb.position + normalizedMoveDirection * moveSpeed * Time.fixedDeltaTime);
-
-
-        //rb.AddForce(moveDirection.normalized * moveSpeed * 10f);
+        rb.MovePosition(rb.position + normalizedMoveDirection * currentSpeed * Time.fixedDeltaTime);
 
         HandleFootsteps();
-
     }
 
     void HandleFootsteps()
@@ -110,12 +117,14 @@ public class PlayerController : MonoBehaviour
     {
         isStepping = true;
 
-        // Alternate between the two clips
         AudioClip clipToPlay = playFirstStep ? step1 : step2;
         audioSource.PlayOneShot(clipToPlay);
         playFirstStep = !playFirstStep;
 
-        yield return new WaitForSeconds(stepDelay);
+        // Optional: shorten footstep delay while sprinting // ADDED
+        float currentStepDelay = isSprinting ? stepDelay * 0.7f : stepDelay;
+
+        yield return new WaitForSeconds(currentStepDelay);
         isStepping = false;
     }
 
@@ -123,7 +132,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        //limit velocity if needed
         if (flatVel.magnitude > moveSpeed)
         {
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
@@ -138,10 +146,8 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        //reset y velocity
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.linearVelocity += Vector3.up * jumpForce;
-        
     }
 
     void ResetJump()
