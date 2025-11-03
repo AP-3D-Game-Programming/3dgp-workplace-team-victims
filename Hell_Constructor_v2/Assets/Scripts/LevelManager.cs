@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     public int level;
     private GameObject spawner;
     private string[] spawnerNames = { "Wall", "Doorway", "Floor" };
-    private int[,] Amounts = { { 3, 1, 1 }, { 2, 1, 1 } }; // eerste is level, 2de is structure
+    public int[,] Amounts = { { 3, 1, 1 }, { 2, 1, 1 } }; // eerste is level, 2de is structure
     public GameObject[] blueprintHouses;
     
     void Start()

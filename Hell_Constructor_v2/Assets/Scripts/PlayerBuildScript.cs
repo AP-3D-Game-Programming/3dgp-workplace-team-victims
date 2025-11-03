@@ -17,6 +17,7 @@ public class PlayerBuildScript : MonoBehaviour
     private AudioSource aS;
     public AudioClip errorSound;
 
+    private UIScript ui;
     void Start()
     {
         structure = null;
@@ -25,6 +26,7 @@ public class PlayerBuildScript : MonoBehaviour
         if (pickUpText != null) pickUpText.gameObject.SetActive(false);
         if (buildText != null) buildText.gameObject.SetActive(false);
         levelManager = gameObject.GetComponent<LevelManager>();
+        ui = GameObject.Find("Canvas").GetComponent<UIScript>();
     }
 
     void Update()
@@ -33,6 +35,7 @@ public class PlayerBuildScript : MonoBehaviour
         {
             buildAmount = 0;
             levelManager.newLevel();
+            ui.playerObjective++;
         }
         // 1. Zorg ervoor dat tempStructure bijgewerkt wordt.
         bool structureNearby = CheckForNearbyStructure();
@@ -56,6 +59,8 @@ public class PlayerBuildScript : MonoBehaviour
                     {
                         structure = tempStructure;
                         PickUpStructure();
+                        if (ui.playerObjective == 2)
+                            ui.playerObjective++;
                     }
                 }
                 else
@@ -96,6 +101,8 @@ public class PlayerBuildScript : MonoBehaviour
                         buildText.gameObject.SetActive(false);
                         canSpawn = true;
                         buildAmount++;
+                        if (ui.playerObjective == 3)
+                            ui.playerObjective++;
                         structure = null; // Laat de structuur los
                         // Na succesvolle bouw zal het geplaatste object in de volgende frame 
                         // niet opnieuw worden opgepakt omdat canPickUp = false is.

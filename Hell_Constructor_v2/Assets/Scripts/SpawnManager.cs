@@ -11,18 +11,24 @@ public class SpawnManager : MonoBehaviour
 
 
     public GameObject player;
+    private UIScript ui;
 
     void Start()
     {
         playerCamera = Camera.main;
         popupText.gameObject.SetActive(false);
         player = GameObject.Find("Player");
+        ui = GameObject.Find("Canvas").GetComponent<UIScript>();
     }
 
     void Update()
     {
         HandleRaycast();
         HandleInput();
+        if (currentZone != null && ui.playerObjective == 0)
+        {
+            ui.playerObjective++;
+        }
     }
 
 
@@ -68,6 +74,8 @@ public class SpawnManager : MonoBehaviour
                     popupText.text = "Structure built!";
                     currentZone.amount--;
                     player.GetComponent<PlayerBuildScript>().canSpawn = false;
+                if (ui.playerObjective == 1)
+                    ui.playerObjective++;
                 }
             else
             {

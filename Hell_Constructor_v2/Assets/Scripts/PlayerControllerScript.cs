@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public KeyCode sprintKey = KeyCode.LeftShift; // Sprint key
     private bool isSprinting = false; // Track sprint state
 
+    public int playerUI = 0;
+
     private Vector3 moveDirection;
     private Vector3 normalizedMoveDirection;
 
@@ -92,12 +94,29 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearDamping = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.W) && playerUI == 0)
+        {
+            playerUI++;
+        }
     }
 
     void FixedUpdate()
     {
         // ADDED: adjust movement speed based on sprint state
-        float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+        float currentSpeed;
+
+        if (isSprinting)
+        {
+            currentSpeed = moveSpeed * sprintMultiplier;
+            if (playerUI == 1)
+            {
+                playerUI++;
+            }
+        } else
+        {
+            currentSpeed = moveSpeed;
+        }
 
         rb.MovePosition(rb.position + normalizedMoveDirection * currentSpeed * Time.fixedDeltaTime);
 
@@ -150,6 +169,8 @@ public class PlayerController : MonoBehaviour
     {
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.linearVelocity += Vector3.up * jumpForce;
+        if (playerUI == 2)
+            playerUI++;
     }
 
     void ResetJump()

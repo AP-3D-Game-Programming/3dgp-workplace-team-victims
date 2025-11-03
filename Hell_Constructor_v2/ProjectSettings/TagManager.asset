@@ -10,6 +10,7 @@ TagManager:
   - Doorway
   - Blueprint
   - Structure
+  - Zone
   layers:
   - Default
   - TransparentFX
