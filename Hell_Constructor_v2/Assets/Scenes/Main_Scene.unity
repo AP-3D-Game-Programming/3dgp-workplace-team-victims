@@ -890,6 +890,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2284397312915192474, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
+      propertyPath: m_text
+      value: 'Press "E" To pick up '
+      objectReference: {fileID: 0}
     - target: {fileID: 3918971776208548358, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -921,6 +925,10 @@ PrefabInstance:
     - target: {fileID: 9139347359225618395, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221583592889219195, guid: caf05855e4f10ce4aafdbb1fd4d4dba3, type: 3}
+      propertyPath: m_text
+      value: Press "B" to build
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
