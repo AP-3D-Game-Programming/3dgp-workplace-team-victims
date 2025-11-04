@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 6552942393507658560}
   - component: {fileID: 1310600338721680517}
   - component: {fileID: 17925940254823923}
+  - component: {fileID: 435263579754718697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -311,8 +312,10 @@ MonoBehaviour:
   moveSpeed: 10
   sprintMultiplier: 1.5
   sprintKey: 304
+  playerUI: 0
   step1: {fileID: 8300000, guid: 3d132da7af60f1145a3deb6a8bc42a08, type: 3}
   step2: {fileID: 8300000, guid: 47832b56ccba5bc408b1d5aac1871746, type: 3}
+  superSecret: {fileID: 8300000, guid: 4120e2bbac411fa45a554d67dee1dcaa, type: 3}
   stepDelay: 0.5
   playerHeight: 2
   whatIsGround:
@@ -323,6 +326,7 @@ MonoBehaviour:
   jumpCooldown: 1
   airMultiplier: 2
   jumpKey: 32
+  respawnPoint: {fileID: 0}
 --- !u!82 &1310600338721680517
 AudioSource:
   m_ObjectHideFlags: 0
@@ -434,4 +438,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBuildScript
   pickUpText: {fileID: 0}
   buildText: {fileID: 0}
-  errorSound: {fileID: 0}
+  canSpawn: 1
+  buildAmount: 0
+  errorSound: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
+--- !u!114 &435263579754718697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054009881175267803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d566caf0c60c8540ba55451619c8350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  level: 0
+  blueprintHouses:
+  - {fileID: 0}
+  - {fileID: 0}
