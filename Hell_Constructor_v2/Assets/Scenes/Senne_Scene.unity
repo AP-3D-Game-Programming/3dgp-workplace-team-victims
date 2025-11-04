@@ -1856,6 +1856,10 @@ PrefabInstance:
       propertyPath: pickUpText
       value: 
       objectReference: {fileID: 1838047076}
+    - target: {fileID: 207145353484028876, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: m_AngularDamping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1407985890114068664, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.05
@@ -1902,7 +1906,11 @@ PrefabInstance:
       objectReference: {fileID: 582562786}
     - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: jumpForce
-      value: 10
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: groundDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: superSecret
@@ -1912,6 +1920,10 @@ PrefabInstance:
       propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 1079081950}
+    - target: {fileID: 6552942393507658560, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
+      propertyPath: airMultiplier
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9054009881175267803, guid: 18a14f571b8664b44a216b471c556d81, type: 3}
       propertyPath: m_Name
       value: Player
