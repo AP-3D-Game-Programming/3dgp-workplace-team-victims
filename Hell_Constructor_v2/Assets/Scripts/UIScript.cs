@@ -1,208 +1,104 @@
 using TMPro;
 using UnityEngine;
 
-/// <summary>
-/// Beheert de gebruikersinterface (UI) elementen, inclusief tutorial stappen, 
-/// speldoelen en de weergave van de resterende voorraad van bouwstructuren.
-/// </summary>
 public class UIScript : MonoBehaviour
 {
-    // -----------------------------------------------------------------------------------------------------------------
-
-    #region UI Componenten
-
-    [Header("UI Elementen")]
-    [Tooltip("Veld voor tutorialteksten.")]
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private GameObject player;
+    private PlayerController playerController;
+    private PlayerBuildScript playerBuildScript;
+    private LevelManager levelManager;
     public TextMeshProUGUI tutorialText;
-
-    [Tooltip("Veld voor de huidige speldoelstelling.")]
     public TextMeshProUGUI objectiveText;
-
-    [Tooltip("Veld voor de voorraadinformatie (magazijn).")]
     public TextMeshProUGUI magasinText;
-
-    [Tooltip("Veld voor speciale level/boss meldingen.")]
     public TextMeshProUGUI bossText;
 
-    #endregion
 
-    // -----------------------------------------------------------------------------------------------------------------
-
-    #region Component Verwijzingen
-
-    // We hoeven alleen de componenten zelf op te slaan, niet het 'Player' GameObject.
-    private PlayerController playerController;
-    private PlayerBuildScript playerBuildScript; // Momenteel ongebruikt in de Update, maar behouden.
-    private LevelManager levelManager;
-    private SpawnZone[] allSpawnZones; // Array om alle SpawnZones te cachen.
-
-    #endregion
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    #region State
-
-    [Header("Spel Status")]
-    [Tooltip("De index die het huidige speldoel bijhoudt.")]
     public int playerObjective;
-
-    // Constanten voor de structuur namen (voor magazijn weergave)
-    private const string WALL = "Wall";
-    private const string DOORWAY = "Doorway";
-    private const string FLOOR = "Floor";
-
-    #endregion
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    #region Unity Lifecycle Methods
-
     void Start()
     {
-        // Zoek het speler GameObject
-        GameObject player = GameObject.Find("Player");
-
-        if (player != null)
-        {
-            // Haal de benodigde componenten op (aangenomen dat ze op de Player zitten)
-            playerController = player.GetComponent<PlayerController>();
-            playerBuildScript = player.GetComponent<PlayerBuildScript>();
-            levelManager = player.GetComponent<LevelManager>();
-        }
-        else
-        {
-            Debug.LogError("Player GameObject niet gevonden. UI-updates zullen falen.");
-        }
-
-        // Cache alle SpawnZones in de scène (Aangenomen tag "Spawn" of "SpawnZone")
-        // De originele code gebruikte FindGameObjectsWithTag("Spawn").
-        allSpawnZones = FindObjectsOfType<SpawnZone>();
-
-        // Initialiseer de zichtbaarheid van de UI
-        if (tutorialText != null) tutorialText.gameObject.SetActive(true);
-        if (objectiveText != null) objectiveText.gameObject.SetActive(true);
-        if (magasinText != null) magasinText.gameObject.SetActive(true);
-        if (bossText != null) bossText.gameObject.SetActive(false);
+        player = GameObject.Find("Player");
+        playerController = player.GetComponent<PlayerController>();
+        playerBuildScript = player.GetComponent<PlayerBuildScript>();
+        levelManager = player.GetComponent<LevelManager>();
+        tutorialText.gameObject.SetActive(true);
+        objectiveText.gameObject.SetActive(true);
+        magasinText.gameObject.SetActive(true);
+        bossText.gameObject.SetActive(false);
     }
 
-    void Update()
+    // Update is called once per frame
+    void Update()
     {
-        UpdateTutorialText();
-        UpdateObjectiveText();
-        UpdateMagasinText();
-        CheckLevelSpecificMessages();
-    }
-
-    #endregion
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-    #region UI Updatelogica
-
-    /// <summary>
-    /// Update de tutorialtekst op basis van de PlayerController.playerUI status.
-    /// </summary>
-    private void UpdateTutorialText()
-    {
-        if (playerController == null || tutorialText == null) return;
-
         switch (playerController.playerUI)
         {
             case 0:
-                tutorialText.text = @"Gebruik **muis** om rond te kijken
-gebruik **WASD** om te bewegen";
+                tutorialText.text = @"Use mouse to look around
+use wasd to move";
                 break;
             case 1:
-                tutorialText.text = "Gebruik **Shift** om te sprinten";
+                tutorialText.text = "use shift to sprint";
                 break;
             case 2:
-                tutorialText.text = "Gebruik **Spatiebalk** om te springen";
+                tutorialText.text = "use space to jump";
                 break;
             default:
                 tutorialText.gameObject.SetActive(false);
                 break;
         }
-    }
-
-    /// <summary>
-    /// Update de objective tekst op basis van de playerObjective status.
-    /// </summary>
-    private void UpdateObjectiveText()
-    {
-        if (objectiveText == null) return;
 
         switch (playerObjective)
         {
             case 0:
-                objectiveText.text = "Doel: Ga naar het **Magazijn** (SpawnZone).";
+                objectiveText.text = "objective: go to magasin";
                 break;
             case 1:
-                objectiveText.text = "Doel: Druk op **F** bij een knop om een structuur te spawnen.";
+                objectiveText.text = "objective: push button to drop off structure";
                 break;
             case 2:
-                objectiveText.text = "Doel: Druk op **E** om de gespawnde structuur op te pakken.";
+                objectiveText.text = "objective: pick up structure";
                 break;
             case 3:
-                objectiveText.text = "Doel: Plaats de structuur met **B** op de bijpassende blauwdruk.";
+                objectiveText.text = "objective: place structure on matching blueprint";
                 break;
             case 4:
-                objectiveText.text = "Doel: Bouw het huis af.";
+                objectiveText.text = "objective: build the house";
                 break;
             case 5:
-                objectiveText.text = "Doel: Bouw het tweede huis af.";
+                objectiveText.text = "objective: build the second house";
                 break;
             default:
-                objectiveText.text = "Doel: Voltooi het spel! (Alle huizen gebouwd)";
-                // Optioneel: objectiveText.gameObject.SetActive(false);
+                tutorialText.gameObject.SetActive(false);
                 break;
         }
-    }
 
-    /// <summary>
-    /// Update de magazijn voorraad tekst door alle SpawnZones te controleren.
-    /// </summary>
-    private void UpdateMagasinText()
-    {
-        if (magasinText == null) return;
-
-        // Gebruik een dictionary om de hoeveelheden per structuur op te slaan.
-        var amounts = new System.Collections.Generic.Dictionary<string, int>
+        GameObject[] spawnZones = GameObject.FindGameObjectsWithTag("Spawn");
+        int[] amounts = { 0, 0, 0 };
+        foreach (var z in spawnZones)
         {
-            { WALL, 0 }, { FLOOR, 0 }, { DOORWAY, 0 }
-        };
-
-        // Itereren over de gecachte SpawnZones is sneller dan elke frame FindGameObjectsWithTag te doen.
-        foreach (var zone in allSpawnZones)
-        {
-            if (zone != null && amounts.ContainsKey(zone.structureName))
+            SpawnZone zone = z.GetComponent<SpawnZone>();
+            switch (zone.structureName)
             {
-                amounts[zone.structureName] = zone.amount;
+                case "Wall":
+                    amounts[0] = zone.amount;
+                    break;
+                case "Floor":
+                    amounts[1] = zone.amount;
+                    break;
+                case "Doorway":
+                    amounts[2] = zone.amount;
+                    break;
             }
         }
 
-        // Gebruik string interpolatie voor een duidelijke weergave
-        magasinText.text =
-            $"**Muur:** {amounts[WALL]}   **Vloer:** {amounts[FLOOR]}   **Deur:** {amounts[DOORWAY]}";
-    }
+        magasinText.text = @$"Walls: {amounts[0]}   Floors: {amounts[1]}    Doorway: {amounts[2]}";
 
-    /// <summary>
-    /// Toont speciale berichten op basis van het LevelManager.currentLevel.
-    /// </summary>
-    private void CheckLevelSpecificMessages()
-    {
-        if (levelManager == null || bossText == null) return;
-
-        // Aangenomen: levelManager.level is inmiddels hernoemd naar currentLevel in LevelManager
-        if (levelManager.currentLevel == 2)
+        if (levelManager.level == 2)
         {
             bossText.gameObject.SetActive(true);
-            bossText.text = "Oeps, er mist een muur in de levering. Doe wat je kunt en steel van je andere huis!";
+            bossText.text = "Oops, there is a wall missing in the delivery. Do what you can and steal from your other house!";
         }
-        else
-        {
-            bossText.gameObject.SetActive(false);
-        }
-    }
 
-    #endregion
+
+    }
 }
