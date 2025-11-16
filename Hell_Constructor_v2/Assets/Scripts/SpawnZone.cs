@@ -12,7 +12,7 @@ public class SpawnZone : MonoBehaviour
     public void setNewMax(int max)
     {
         maxAmount = max;
-        amount = maxAmount;
+        amount += maxAmount;
     }
 
 

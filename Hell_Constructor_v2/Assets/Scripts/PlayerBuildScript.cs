@@ -12,6 +12,7 @@ public class PlayerBuildScript : MonoBehaviour
     private GameObject tempStructure; // Wordt ingesteld door CheckForNearbyStructure()
     private GameObject blueprint;
     private LevelManager levelManager;
+    public bool isInMagazine;
 
     public bool canSpawn = true;
     private int[] structureAmountsLevels = { 5, 5 };
@@ -30,6 +31,7 @@ public class PlayerBuildScript : MonoBehaviour
         if (buildText != null) buildText.gameObject.SetActive(false);
         levelManager = gameObject.GetComponent<LevelManager>();
         ui = GameObject.Find("Canvas").GetComponent<UIScript>();
+        isInMagazine = false;
     }
 
     void Update()
@@ -103,7 +105,8 @@ public class PlayerBuildScript : MonoBehaviour
                         structureScript.Build(blueprint);
                         buildText.gameObject.SetActive(false);
                         canSpawn = true;
-                        buildAmount++;
+                        if (!isInMagazine)
+                            buildAmount++;
                         if (ui.playerObjective == 3)
                             ui.playerObjective++;
                         structure = null; // Laat de structuur los
@@ -186,4 +189,20 @@ public class PlayerBuildScript : MonoBehaviour
         pickUpText.gameObject.SetActive(false);
         // canSpawn = true; // Niet echt gebruikt, maar kan blijven staan.
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("temp"))
+        {
+            isInMagazine = true;
+        }
+    }
+
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("temp"))
+        {
+            isInMagazine = false;
+        }
+    }
 }

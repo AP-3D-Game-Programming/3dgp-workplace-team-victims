@@ -96,7 +96,14 @@ use wasd to move";
         if (levelManager.level == 2)
         {
             bossText.gameObject.SetActive(true);
-            bossText.text = "Oops, there is a wall missing in the delivery. Do what you can and steal from your other house!";
+            bossText.text = "Oops, there is a wall missing in the delivery. Get everything from the magazine and steal the rest!";
+        } else if (levelManager.level == 3)
+        {
+            bossText.text = "Damn, no walls this time. Steal all the walls from the houses, the floors can fly!";
+            
+        } else if (levelManager.level == 4)
+        {
+            bossText.text = "No delivery? this has to be a joke! You know what to do!!";
         }
 
 

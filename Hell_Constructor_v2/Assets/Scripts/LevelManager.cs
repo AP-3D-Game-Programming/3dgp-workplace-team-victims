@@ -4,7 +4,7 @@ public class LevelManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public int level;
-    public int[,] Amounts = { { 3, 1, 1 }, { 2, 1, 1 } }; // eerste is level, 2de is structure
+    public int[,] Amounts = { { 3, 1, 1 }, { 2, 1, 1 }, {0,1,1}, {0,0,0} }; // eerste is level, 2de is structure
     public GameObject[] blueprintHouses;
 
     private GameObject spawner;

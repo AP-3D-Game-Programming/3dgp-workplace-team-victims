@@ -9,6 +9,7 @@ public class StructureScript : MonoBehaviour
     public bool canPickUp = true;
     private AudioSource aS;
     public string structureName;
+    private PlayerBuildScript buildScript;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class StructureScript : MonoBehaviour
         player = GameObject.Find("Player");
         // Optioneel: Controleer of de AudioSource bestaat
         aS = gameObject.GetComponent<AudioSource>();
+        buildScript = GameObject.Find("Player").GetComponent<PlayerBuildScript>();
     }
 
     void Update()
@@ -58,6 +60,7 @@ public class StructureScript : MonoBehaviour
         followPlayer = false;
         if (blueprint != null)
         {
+            if(!buildScript.isInMagazine)
             blueprint.gameObject.SetActive(false);
         }
 
