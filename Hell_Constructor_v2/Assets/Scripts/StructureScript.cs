@@ -62,11 +62,12 @@ public class StructureScript : MonoBehaviour
         {
             if(!buildScript.isInMagazine)
             blueprint.gameObject.SetActive(false);
+            canPickUp = false;
+
         }
 
         // Dit is CRUCIAAL voor de 'bounce back' fix: 
         // De geplaatste structuur kan NIET meer worden opgepakt.
-        canPickUp = false;
 
         if (aS != null)
         {

@@ -15,7 +15,7 @@ public class PlayerBuildScript : MonoBehaviour
     public bool isInMagazine;
 
     public bool canSpawn = true;
-    private int[] structureAmountsLevels = { 5, 5 };
+    private int[] structureAmountsLevels = { 5, 5, 8,8 };
     public int buildAmount = 0;
 
     private AudioSource aS;
